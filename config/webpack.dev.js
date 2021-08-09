@@ -1,5 +1,5 @@
-const { default: merge } = require("webpack-merge");
-const common = require("./webpack.common");
+const { default: merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
 
 const scssRules = {
   test: /\.s[ac]ss$/i,
@@ -13,22 +13,22 @@ const scssRules = {
   ],
 };
 
-/** @type {import('webpack').Configuration} **/
+/** @type {import('webpack').Configuration} * */
 const devConfig = {
   mode: 'development',
   devServer: {
     port: 3000,
     contentBase: '../dist',
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Origin': '*',
     },
-    open: true
+    open: true,
   },
-  target: "web",
-  devtool: "eval-source-map",
+  target: 'web',
+  devtool: 'eval-source-map',
   module: {
-    rules: [scssRules]
-  }
-}
+    rules: [scssRules],
+  },
+};
 
-module.exports = merge(common, devConfig)
+module.exports = merge(common, devConfig);

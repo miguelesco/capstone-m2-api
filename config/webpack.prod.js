@@ -1,6 +1,6 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { default: merge } = require("webpack-merge");
-const common = require("./webpack.common");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { default: merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
 
 const scssRules = {
   test: /\.s[ac]ss$/i,
@@ -14,21 +14,21 @@ const scssRules = {
   ],
 };
 
-/** @type {import('webpack').Configuration} **/
+/** @type {import('webpack').Configuration} * */
 const prodConfig = {
   mode: 'production',
   devtool: 'source-map',
   optimization: {
     splitChunks: {
-      chunks: "all"
-    }
+      chunks: 'all',
+    },
   },
   plugins: [
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
   ],
   module: {
-    rules: [scssRules]
-  }
-}
+    rules: [scssRules],
+  },
+};
 
-module.exports = merge(common, prodConfig)
+module.exports = merge(common, prodConfig);
