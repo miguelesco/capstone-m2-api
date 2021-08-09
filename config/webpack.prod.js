@@ -1,6 +1,8 @@
+/* eslint-disable */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { default: merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
+/* eslint-disable */
 
 const scssRules = {
   test: /\.s[ac]ss$/i,

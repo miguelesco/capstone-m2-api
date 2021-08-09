@@ -1,5 +1,7 @@
+/* eslint-disable */
 const { default: merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
+/* eslint-disable */
 
 const scssRules = {
   test: /\.s[ac]ss$/i,
