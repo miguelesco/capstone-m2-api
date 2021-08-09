@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch src/app/scss/main.scss src/main.css",
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development --watch",
+    "build": "webpack --config config/webpack.prod.js",
+    "start": "webpack serve --config config/webpack.dev.js",
     "test": "jest "
   },
   "keywords": [],
@@ -31,6 +31,12 @@
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.20.1",
     "webpack": "^5.45.1",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "mini-css-extract-plugin": "^2.2.0"
   }
 }
