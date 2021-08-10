@@ -1,4 +1,4 @@
-import apiCall, {error, ul} from './utilities.js'
+import apiCall, {error, ul, eventListeners} from './utilities.js'
 
 let beerElement;
 
@@ -12,7 +12,9 @@ class Render {
       return [];
     }
   }
-
+  openPopup (name,i) {
+    console.log(name, i)
+  }
   async reloadHTML() {
     const beers = await this.refresh();
     ul.innerHTML = '';
@@ -25,11 +27,12 @@ class Render {
                 <p>${name}</p>
                 <i class="far fa-heart"></i>
               </div>
-              <button type="button">COMMENTS</button>
+              <button class="commentBtn" type="button">COMMENTS</button>
             </li>`;
       ul.innerHTML += beerElement;
     });
-    console.log(beers)
+    
+    eventListeners(this.openPopup)
   }
 }
 
