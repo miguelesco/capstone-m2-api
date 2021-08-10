@@ -27,7 +27,8 @@ class Render {
                 <p>${name}</p>
                 <i class="far fa-heart"></i>
               </div>
-              <button class="commentBtn" type="button">COMMENTS</button>
+              <button class="commentBtn" type="button">COMMENT</button>
+              <button class="detailsBtn" type="button">DETAILS</button>
             </li>`;
       ul.innerHTML += beerElement;
     });

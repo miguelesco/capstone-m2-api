@@ -18,21 +18,11 @@ export const error = (message = '') => {
   throw new Error(error);
 };
 
-export const createElement = (elementType = '', elementContent, elementClass = '', type = '', elementId = '') => {
-  const newElement = document.createElement(elementType);
-  newElement.innerHTML = elementContent;
-  if (elementClass) newElement.className = elementClass;
-  if (elementId) newElement.id = elementId;
-  if (type) newElement.type = type
-  return newElement;
-};
-
 export const eventListeners = (onclick = (beersInfo, i) => {}, beersInfo = []) => {
   const listChildrens = Array.from(ul.children)
 
   listChildrens.forEach( (children,i) => {
-    const name = children.querySelector('.image').alt
-    const button = listChildrens[i].querySelector('.commentBtn')
+    const button = listChildrens[i].querySelector('.detailsBtn')
     button.addEventListener('click', () => onclick(beersInfo[i], i))
 
   })
