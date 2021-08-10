@@ -12,8 +12,8 @@ class Render {
       return [];
     }
   }
-  openPopup (name,i) {
-    console.log(name, i)
+  openPopup (beersInfo,i) {
+    console.log(beersInfo, i)
   }
   async reloadHTML() {
     const beers = await this.refresh();
@@ -31,8 +31,7 @@ class Render {
             </li>`;
       ul.innerHTML += beerElement;
     });
-    
-    eventListeners(this.openPopup)
+    eventListeners(this.openPopup, beers )
   }
 }
 

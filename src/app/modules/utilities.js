@@ -27,13 +27,13 @@ export const createElement = (elementType = '', elementContent, elementClass = '
   return newElement;
 };
 
-export const eventListeners = (onclick = (name, i) => {}) => {
+export const eventListeners = (onclick = (beersInfo, i) => {}, beersInfo = []) => {
   const listChildrens = Array.from(ul.children)
 
   listChildrens.forEach( (children,i) => {
     const name = children.querySelector('.image').alt
     const button = listChildrens[i].querySelector('.commentBtn')
-    button.addEventListener('click', () => onclick(name, i))
+    button.addEventListener('click', () => onclick(beersInfo[i], i))
 
   })
 } 
