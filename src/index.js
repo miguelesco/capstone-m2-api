@@ -1,9 +1,9 @@
 import './main.scss';
-import Render from './app/modules/render'
+import Render from './app/modules/render.js';
 
 const init = () => {
-  const render = new Render()
+  const render = new Render();
   render.reloadHTML();
-}
+};
 
 init();
