@@ -1,0 +1,24 @@
+
+@mixin d-flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin coco-text($size, $weight, $height) {
+  font-family: "Cocogoose", sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $height;
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}

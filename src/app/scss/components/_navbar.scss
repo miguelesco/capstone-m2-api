@@ -1,0 +1,55 @@
+@use '../utilities' as *;
+
+.navbar {
+  @include d-flex(row);
+
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 50px;
+
+  a {
+    margin-right: auto;
+    margin-bottom: 0;
+    font-weight: bolder;
+    font-size: 25px;
+  }
+
+  p {
+    margin-right: auto;
+    margin-bottom: 0;
+    font-weight: bolder;
+    font-size: 25px;
+  }
+
+  ul {
+    list-style-type: none;
+
+    @include d-flex(row);
+
+    justify-content: space-between;
+    margin-bottom: 0;
+
+    :nth-child(2),
+    :nth-child(3) {
+      border-left: solid 3px black;
+    }
+
+    li {
+      padding: 0 1rem;
+      cursor: pointer;
+
+      :active {
+        color: blue;
+      }
+
+      :hover {
+        color: blue;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
