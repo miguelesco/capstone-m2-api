@@ -1,28 +1,20 @@
 export const ul = document.querySelector('.listContainer');
 const baseURL = 'https://api.punkapi.com/v2/';
+const likesBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+export const appID = 'cuSc6vNb8MIaUDaK4qjK';
 
-export default async function apiCall(urlExtension = '', method = '', body) {
-  const response = await fetch(baseURL + urlExtension, {
+export default async function apiCall(urlExtension = '', method = '', body, like = false) {
+  const response = await fetch(like ? likesBaseURL : baseURL + urlExtension, {
     method: !method ? 'GET' : method,
     body: JSON.stringify(body),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
-      Accept: 'application/json',
     },
   });
-  return response.json();
+  return like ? response.text() : response.json();
 }
 
 export const error = (message = '') => {
   const error = `An error has ocurred ${message}`;
-  throw new Error(error);
-};
-
-export const eventListeners = (onclick = () => {}, beersInfo = []) => {
-  const listChildrens = Array.from(ul.children);
-
-  listChildrens.forEach((_, i) => {
-    const button = listChildrens[i].querySelector('.detailsBtn');
-    button.addEventListener('click', () => onclick(beersInfo[i], i));
-  });
+  console.log(error);
 };

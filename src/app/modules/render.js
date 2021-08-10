@@ -1,4 +1,5 @@
-import apiCall, { error, ul, eventListeners } from './utilities.js';
+import apiCall, { error, ul, appID } from './utilities.js';
+import eventListeners from './evenListeners.js';
 
 let beerElement;
 
@@ -17,7 +18,20 @@ class Render {
     console.log(beersInfo, i);
   }
 
+  createApp = async () => {
+    try {
+      const response = await apiCall('', 'POST', { name: 'newAppMiguel' }, true);
+      appID = response;
+    } catch (err) {
+      error(err);
+      appID = '';
+    }
+  }
+
   async reloadHTML() {
+    if (!appID) {
+      this.createApp();
+    }
     const beers = await this.refresh();
     ul.innerHTML = '';
     beers.forEach((data) => {
