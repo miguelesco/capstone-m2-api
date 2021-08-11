@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 export const ul = document.querySelector('.listContainer');
 const baseURL = 'https://api.punkapi.com/v2/';
 const likesBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
