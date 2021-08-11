@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-trailing-spaces */
-import apiCall, { error, ul, appID } from './utilities.js';
+import apiCall, { error, ul, appID, liNav } from './utilities.js';
 import eventListeners from './evenListeners.js';
 
 let beerElement;
@@ -20,10 +20,14 @@ class Render {
     console.log(beersInfo, i);
   }
 
+  numberOfItems = (beersLength = 0) => {
+    const beerNumber = `<p>Beers Available(${beersLength})</p>`;
+    liNav.innerHTML = beerNumber;
+  }
+
   likesNumber = async () => {
     try {
       const response = await apiCall(`${appID}/likes`, 'GET', {}, true);
-      console.log(response);
       return JSON.parse(response);
     } catch (err) { 
       error(err);
@@ -47,6 +51,7 @@ class Render {
     }
     const likes = await this.likesNumber();
     const beers = await this.refresh();
+    this.numberOfItems(beers.length);
     ul.innerHTML = '';
     beers.forEach((data) => {
       /* eslint-disable */

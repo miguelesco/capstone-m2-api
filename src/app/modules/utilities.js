@@ -1,8 +1,10 @@
 /* eslint-disable linebreak-style */
 export const ul = document.querySelector('.listContainer');
+export const appID = 'cuSc6vNb8MIaUDaK4qjK';
+const ulNav = document.querySelector('.nav-wrapper');
+export const liNav = ulNav.querySelector('.nav-element');
 const baseURL = 'https://api.punkapi.com/v2/';
 const likesBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
-export const appID = 'cuSc6vNb8MIaUDaK4qjK';
 
 export default async function apiCall(urlExtension = '', method = '', body, like = false) {
   let response;
