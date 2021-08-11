@@ -24,6 +24,9 @@ const devConfig = {
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
+    proxy: {
+      '/internal': 'http://localhost:3000'
+    },
     open: true,
   },
   target: 'web',
