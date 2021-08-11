@@ -1,6 +1,7 @@
 import apiCall, { error, ul, appID } from './utilities.js';
 import eventListeners from './evenListeners.js';
 
+
 let beerElement;
 
 class Render {
@@ -15,6 +16,18 @@ class Render {
   }
 
   openPopup = (beersInfo, i) => {
+    const myDiv = document.getElementById('pop');
+    myDiv.classList.remove('.pop-up');
+    myDiv.classList.add('.pop-up-display');
+    myDiv.innerHTML = `
+             <div class="pop-content">
+             <button class="close-button">&times;</button>
+              <img class="image" src="${beersInfo.image_url}" alt="${beersInfo.name}"></img>
+              <div class="beer-title">
+                <p>${beersInfo.name}</p>
+                <p class="likes"><i class="far fa-heart"></i> 5</p>
+              </div>
+            </div>`;
     console.log(beersInfo, i);
   }
 

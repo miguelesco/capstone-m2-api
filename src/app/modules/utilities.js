@@ -18,3 +18,4 @@ export const error = (message = '') => {
   const error = `An error has ocurred ${message}`;
   console.log(error);
 };
+
