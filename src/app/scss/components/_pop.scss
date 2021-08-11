@@ -6,16 +6,8 @@
   right: 0;
   background: rgba(0, 0, 0, 0.7);
   transition: opacity 500ms;
-  visibility: visible;
-  opacity: 1;
-}
 
-.overlay:target {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-.popup {
+  .popup {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
@@ -26,64 +18,68 @@
     width: 80%;
     position: relative;
     transition: all 5s ease-in-out;
-    
-      
-}
-
-.popup .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    transition: all 200ms;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-  }
-  .popup .close:hover {
-    color: #06D85F;
   }
 
-.pop-content {
-  max-height: 30%;
-  overflow: auto;
-}
-.pop-up-display{
-    display: block;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    border: 1px solid black;
-    border-radius: 10px;
-    z-index: 10;
-    background-color: white;
-    width: 500px;
-    max-width: 80%;
-    transition: 200ms ease-in-out;
+  .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06D85F;
+    }
+
+  .pop-content {
+    max-height: 30%;
     overflow: auto;
-    background: rgba(0,0,0,.5);
+  }
+  .pop-up-display{
+      display: block;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      border: 1px solid black;
+      border-radius: 10px;
+      z-index: 10;
+      background-color: white;
+      width: 500px;
+      max-width: 80%;
+      transition: 200ms ease-in-out;
+      overflow: auto;
+      background: rgba(0,0,0,.5);
+  }
+
+  #pop{
+      width: 100%;
+      display: none;
+      padding: 50px 0;
+      text-align: center;
+      background-color: lightblue;
+      margin-top: 20px;
+      
+  }
+
+  .pop.active {
+      transform: translate(-50%, -50%) scale(1);
+  }
+
+  .pop-content .close-btn {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: none;
+      font-size: 1.25rem;
+      font-weight: bold;
+  }
 }
 
-#pop{
-    width: 100%;
-    display: none;
-    padding: 50px 0;
-    text-align: center;
-    background-color: lightblue;
-    margin-top: 20px;
-    
-}
-
-.pop.active {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.pop-content .close-btn {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 1.25rem;
-    font-weight: bold;
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }

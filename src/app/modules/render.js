@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable object-curly-newline */
 /* eslint-disable no-trailing-spaces */
-import apiCall, { error, ul, appID } from './utilities.js';
+import apiCall, { error, ul, appID, overlay, popUp } from './utilities.js';
 import eventListeners from './evenListeners.js';
 
 let beerElement;
@@ -17,12 +18,9 @@ class Render {
   }
 
   openPopup = (beersInfo, i) => {
-    const myDiv = document.getElementById('pop');
-    // myDiv.classList.remove('.pop-up');
-    // myDiv.classList.add('.pop-up-display');
-    myDiv.innerHTML = `
-            <div id="popup1" class="overlay">
-              <div class="popup">
+    overlay.classList.remove('hidden');
+    popUp.innerHTML = `
+            
                 <a class="close" href="#">&times;</a>
                 <div class="pop-content">
                   <img class="image" src="${beersInfo.image_url}" alt="${beersInfo.name}"></img>
@@ -30,9 +28,7 @@ class Render {
                     <p>${beersInfo.name}</p>
                     <p class="likes"><i class="far fa-heart"></i> 5</p>
                   </div>
-                </div>
-              </div>
-            </div>`;
+                </div>`;
     console.log(beersInfo, i);
   }
 
@@ -75,7 +71,7 @@ class Render {
                 <p>${name}</p>
                 <p class="likes"><i class="far fa-heart"></i> ${likes[i]}</p>
               </div>
-              <button class="commentBtn" type="button">COMMENT</button>
+              <button class="commentBtn" type="button" >COMMENT</button>
               <button class="detailsBtn" type="button">DETAILS</button>
             </li>`;
       ul.innerHTML += beerElement;
