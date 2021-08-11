@@ -24,7 +24,7 @@ class Render {
     try {
       const response = await apiCall(`${appID}/likes`, 'GET', {}, true);
       console.log(response);
-      return response;
+      return JSON.parse(response);
     } catch (err) { 
       error(err);
       return [];
@@ -48,16 +48,18 @@ class Render {
     const likes = await this.likesNumber();
     const beers = await this.refresh();
     ul.innerHTML = '';
-    beers.forEach((data, i) => {
+    beers.forEach((data) => {
       /* eslint-disable */
-      const { name, image_url } = data;
+      const { name, image_url, id } = data;
       /* eslint-disable */
+      const findLikes = likes.find(value => value.item_id === id)
+      const amountOfLikes = !findLikes ? 0  : findLikes.likes;
       beerElement = `
             <li >
               <img class="image" src="${image_url}" alt="${name}"></img>
               <div class="beer-title">
                 <p>${name}</p>
-                <p class="likes"><i class="far fa-heart"></i> ${likes[i]}</p>
+                <div class="likes"><i class="far fa-heart"></i> <p>${amountOfLikes}</p></div>
               </div>
               <button class="commentBtn" type="button">COMMENT</button>
               <button class="detailsBtn" type="button">DETAILS</button>

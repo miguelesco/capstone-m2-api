@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import { ul } from './utilities.js';
 import like from './like.js';
 
