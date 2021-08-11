@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-trailing-spaces */
-import apiCall, { error, ul, appID, overlay, popUp } from './utilities.js';
+import apiCall, { error, ul, appID, overlay, popUp, closePopUpHandler, closePopUpBtn } from './utilities.js';
 import eventListeners from './evenListeners.js';
 
 let beerElement;
@@ -17,11 +17,10 @@ class Render {
     }
   }
 
-  openPopup = (beersInfo, i) => {
+  openPopup = (beersInfo) => {
     overlay.classList.remove('hidden');
     popUp.innerHTML = `
-            
-                <a class="close" href="#">&times;</a>
+                <button class="close-pop-up" >&times;</button>
                 <div class="pop-content">
                   <img class="image" src="${beersInfo.image_url}" alt="${beersInfo.name}"></img>
                   <div class="beer-title">
@@ -29,7 +28,8 @@ class Render {
                     <p class="likes"><i class="far fa-heart"></i> 5</p>
                   </div>
                 </div>`;
-    console.log(beersInfo, i);
+    const closePopUpBtn = document.querySelector('.close-pop-up');
+    closePopUpBtn.addEventListener('click', () => closePopUpHandler(closePopUpBtn));
   }
 
   likesNumber = async () => {
