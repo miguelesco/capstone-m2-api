@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable object-curly-newline */
 /* eslint-disable no-trailing-spaces */
 import apiCall, { error, ul, appID, liNav } from './utilities.js';
 import eventListeners from './evenListeners.js';
