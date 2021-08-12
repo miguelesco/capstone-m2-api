@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-alert */
 import { overlay, popUp, closePopUpHandler } from './pop.js';
 import apiCall, { appID, error } from './utilities.js';
 
@@ -15,6 +16,9 @@ const sendComment = async (e, beerInfo) => {
       comment,
     };
     await apiCall(`${appID}/comments`, 'POST', newComment, true);
+    form.children[0].value = '';
+    document.querySelector('#comment').value = '';
+    window.alert('Comment added!');
   } catch (err) {
     error(err);
   }
@@ -38,7 +42,6 @@ const comments = async (beerInfo) => {
   overlay.classList.remove('hidden');
   const comment = await commentsCounter(beerInfo.id);
   const commentNo = comment.length === 0 || comment.length === undefined ? 0 : comment.length;
-  popUp.innerHTML = '';
   popUp.innerHTML = `
                 
                 <div class="pop-content">
