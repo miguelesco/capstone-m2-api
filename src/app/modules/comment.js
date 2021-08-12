@@ -14,8 +14,7 @@ const sendComment = async (e, beerInfo) => {
       username,
       comment,
     };
-    const response = await apiCall(`${appID}/comments`, 'POST', newComment, true);
-    console.log(response);
+    await apiCall(`${appID}/comments`, 'POST', newComment, true);
   } catch (err) {
     error(err);
   }
