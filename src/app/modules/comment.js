@@ -20,27 +20,27 @@ const sendComment = async (e, beerInfo) => {
   }
 };
 
-commentsCounter = async () => {
+const commentsCounter = async (beerId) => {
   try {
-    const response = await apiCall(`${appID}/comments`, 'GET', {}, true);
+    const response = await apiCall(`${appID}/comments?item_id=${beerId}`, 'GET', {}, true);
     return JSON.parse(response);
-  } catch (err) { 
+  } catch (err) {
     error(err);
     return [];
   }
-}
+};
 
-const comments = (beerInfo) => {
+const comments = async (beerInfo) => {
   overlay.classList.remove('hidden');
-  const comment = commentsCounter();
-  const getComments = comment.find(value => value.item_id === id)
-  const commentNo = !getComments ? 0  : getComments.comment;
+  const comment = await commentsCounter(beerInfo.id);
+  const commentNo = comment.length === 0 || comment.length === undefined ? 0 : comment.length;
+  popUp.innerHTML = '';
   popUp.innerHTML = `
                 
                 <div class="pop-content">
                   <h3>Add Comment</h3>
                   <div class="beer-title">
-                  <div class="comment"><i class="fa fa-calculator"></i> <p>${commentNo}</p></div>
+                  <div class="comment"><i class="fa fa-calculator"></i> <p>Total of comments ${commentNo}</p></div>
                     <button class="close-pop-up" >&times;</button>
                     <form id="addPost" action="/" method="">
                       <input type="text" id="fname" name="fname" placeholder="Your Name"><br><br>
