@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import apiCall, { appID, error, ul } from './utilities.js';
 
 const like = async (beerLike) => {
