@@ -55,6 +55,7 @@ const comments = async (beerInfo) => {
                       <input type="submit" class="add" id="add" value="Comment">
                     </form>                  
                   </div>
+                  
                 </div>`;
   const submit = document.getElementById('addPost');
   const closePopUpBtn = document.querySelector('.close-pop-up');
