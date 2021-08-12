@@ -5,7 +5,7 @@ const likesBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/cap
 export const appID = 'cuSc6vNb8MIaUDaK4qjK';
 
 export default async function apiCall(urlExtension = '', method = '', body, like = false) {
-  const response = await fetch(like ? likesBaseURL : baseURL + urlExtension, {
+  const response = await fetch(like ? likesBaseURL + urlExtension : baseURL + urlExtension, {
     method: !method ? 'GET' : method,
     body: JSON.stringify(body),
     headers: {
