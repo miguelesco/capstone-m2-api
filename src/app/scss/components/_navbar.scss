@@ -53,3 +53,12 @@
     }
   }
 }
+
+@include phone {
+  .navbar {
+    @include d-flex(column);
+    a {
+      margin: auto;
+    }
+  }
+}
