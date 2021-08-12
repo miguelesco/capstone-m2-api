@@ -28,6 +28,12 @@ class Render {
                     <p>${beersInfo.name}</p>
                     <p class="likes"><i class="far fa-heart"></i> 5</p>
                   </div>
+                  <div class="comments-display">
+                  <p><span>03/11/2021 Alex:I'd love to buy it!</span></p>
+                  </div>
+                  <div class="comments-display">
+                  <p><span>03/12/2021 Mia:I love to</span></p>
+                  </div>
                 </div>`;
     const closePopUpBtn = document.querySelector('.close-pop-up');
     closePopUpBtn.addEventListener('click', () => closePopUpHandler(closePopUpBtn));
