@@ -1,9 +1,10 @@
 /* eslint-disable linebreak-style */
 const modal = document.getElementById('pop');
 export const modalBtn = document.querySelector('.detailsBtn');
+export const overlay = document.querySelector('.overlay');
+export const popUp = document.querySelector('.pop-up');
 
 export default function openModal() {
-//   const modal = document.getElementById('pop');
   if (modal.style.display === 'none') {
     modal.style.display = 'block';
   } else {
@@ -11,12 +12,7 @@ export default function openModal() {
   }
 }
 
-function closeModal() {
-  modal.style.display = 'none';
-}
-
-function outsideClick(e) {
-  if (e.target == modal) {
-    modal.style.display = 'none';
-  }
-}
+export const closePopUpHandler = (closePopUpBtn) => {
+  overlay.classList.add('hidden');
+  closePopUpBtn.removeEventListener('click', closePopUpHandler);
+};

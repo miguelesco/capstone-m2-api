@@ -1,8 +1,9 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-trailing-spaces */
-import apiCall, { error, ul, appID, overlay, popUp, closePopUpHandler, closePopUpBtn } from './utilities.js';
+import apiCall, { error, ul, appID } from './utilities.js';
 import eventListeners from './evenListeners.js';
+import { closePopUpHandler, overlay, popUp } from './pop.js';
 
 let beerElement;
 
