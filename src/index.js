@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import './main.scss';
 import Render from './app/modules/render.js';
 
