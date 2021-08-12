@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-trailing-spaces */
-import apiCall, { error, ul, appID } from './utilities.js';
+import apiCall, { error, ul, appID, liNav } from './utilities.js';
 import eventListeners from './evenListeners.js';
 import { closePopUpHandler, overlay, popUp } from './pop.js';
 
@@ -33,11 +33,15 @@ class Render {
     closePopUpBtn.addEventListener('click', () => closePopUpHandler(closePopUpBtn));
   }
 
+  numberOfItems = (beersLength = 0) => {
+    const beerNumber = `<p>Beers Available(${beersLength})</p>`;
+    liNav.innerHTML = beerNumber;
+  }
+
   likesNumber = async () => {
     try {
       const response = await apiCall(`${appID}/likes`, 'GET', {}, true);
-      console.log(response);
-      return response;
+      return JSON.parse(response);
     } catch (err) { 
       error(err);
       return [];
@@ -60,17 +64,20 @@ class Render {
     }
     const likes = await this.likesNumber();
     const beers = await this.refresh();
+    this.numberOfItems(beers.length);
     ul.innerHTML = '';
-    beers.forEach((data, i) => {
+    beers.forEach((data) => {
       /* eslint-disable */
-      const { name, image_url } = data;
+      const { name, image_url, id } = data;
       /* eslint-disable */
+      const findLikes = likes.find(value => value.item_id === id)
+      const amountOfLikes = !findLikes ? 0  : findLikes.likes;
       beerElement = `
             <li >
               <img class="image" src="${image_url}" alt="${name}"></img>
               <div class="beer-title">
                 <p>${name}</p>
-                <p class="likes"><i class="far fa-heart"></i> ${likes[i]}</p>
+                <div class="likes"><i class="far fa-heart"></i> <p>${amountOfLikes}</p></div>
               </div>
               <button class="commentBtn" type="button" >COMMENT</button>
               <button class="detailsBtn" type="button">DETAILS</button>
