@@ -3,6 +3,7 @@
 /* eslint-disable no-trailing-spaces */
 import apiCall, { error, ul, appID, liNav } from './utilities.js';
 import eventListeners from './evenListeners.js';
+import { closePopUpHandler, overlay, popUp } from './pop.js';
 
 let beerElement;
 
@@ -17,8 +18,19 @@ class Render {
     }
   }
 
-  openPopup = (beersInfo, i) => {
-    console.log(beersInfo, i);
+  openPopup = (beersInfo) => {
+    overlay.classList.remove('hidden');
+    popUp.innerHTML = `
+                <button class="close-pop-up" >&times;</button>
+                <div class="pop-content">
+                  <img class="image" src="${beersInfo.image_url}" alt="${beersInfo.name}"></img>
+                  <div class="beer-title">
+                    <p>${beersInfo.name}</p>
+                    <p class="likes"><i class="far fa-heart"></i> 5</p>
+                  </div>
+                </div>`;
+    const closePopUpBtn = document.querySelector('.close-pop-up');
+    closePopUpBtn.addEventListener('click', () => closePopUpHandler(closePopUpBtn));
   }
 
   numberOfItems = (beersLength = 0) => {
@@ -67,7 +79,7 @@ class Render {
                 <p>${name}</p>
                 <div class="likes"><i class="far fa-heart"></i> <p>${amountOfLikes}</p></div>
               </div>
-              <button class="commentBtn" type="button">COMMENT</button>
+              <button class="commentBtn" type="button" >COMMENT</button>
               <button class="detailsBtn" type="button">DETAILS</button>
             </li>`;
       ul.innerHTML += beerElement;
