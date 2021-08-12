@@ -23,6 +23,10 @@ const sendComment = async (e, beerInfo) => {
 const commentsCounter = async (beerId) => {
   try {
     const response = await apiCall(`${appID}/comments?item_id=${beerId}`, 'GET', {}, true);
+    const res = JSON.parse(response);
+    if (res.error) {
+      throw new Error(res.error);
+    }
     return JSON.parse(response);
   } catch (err) {
     error(err);
