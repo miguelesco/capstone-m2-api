@@ -6,8 +6,8 @@ const path = require('path');
 
 
 const assetsRule = {
+  test: /\.(png|svg|jpg|jpeg|gif)$/i,
   type: "asset",
-  test: /\.(png|svg|jpg|jpeg|gif)$/i
 }
 
 
