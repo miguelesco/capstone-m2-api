@@ -3,7 +3,7 @@ import { ul } from './utilities.js';
 import like from './like.js';
 import comment from './comment.js';
 
-const eventListeners = (onclick = () => {}, beersInfo = []) => {
+const eventListeners = (onclick = () => {}, beersInfo) => {
   const listChildrens = Array.from(ul.children);
   listChildrens.forEach((_, i) => {
     const button = listChildrens[i].querySelector('.detailsBtn');
