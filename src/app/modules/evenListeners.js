@@ -10,7 +10,7 @@ const eventListeners = (onclick = () => {}, beersInfo) => {
     const likeBtn = listChildrens[i].querySelector('.fa-heart');
     const commentBtn = listChildrens[i].querySelector('.commentBtn');
     button.addEventListener('click', () => onclick(beersInfo[i], i));
-    likeBtn.addEventListener('click', () => like());
+    likeBtn.addEventListener('click', () => like(beersInfo[i]));
     commentBtn.addEventListener('click', () => comment(beersInfo[i]));
   });
 };

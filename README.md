@@ -2,16 +2,19 @@
 
 # Capstone Api Project
 
-<!-- In this project, I set up my first Capstone Project about a Web Design Course.  My goal here is make 2 pages (home and about) of my web development course for mobile and desktop version.
+In this project, I set up my second Capstone Project about a Beer website.  My goal here is make a page that can send and received 
+information from an api.
 
-- ![screenshot](/assets/images/1.png) 
-- ![screenshot](/assets/images/2.png) 
-- ![screenshot](/assets/images/3.png) 
-- ![screenshot](/assets/images/4.png)  -->
+- ![screenshot](/src/resources/1.png)  
+- ![screenshot](/src/resources/2.png) 
 
 ## :red_circle: Live Demo
 
 [Live Preview Link](https://miguelesco.github.io/capstone-m2-api/) 
+
+## :red_circle: Live Video
+
+[Live Video Link](https://www.loom.com/share/c2f49a1f30924e3a96fc9e86b190dd0c) 
 
 ## :hammer: Built With
 
