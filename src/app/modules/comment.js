@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-alert */
 import { overlay, popUp, closePopUpHandler } from './pop.js';
-import apiCall, { appID, error } from './utilities.js';
+import apiCall, { appID, error, getComments } from './utilities.js';
 
 const sendComment = async (e, beerInfo) => {
   try {
@@ -9,7 +9,7 @@ const sendComment = async (e, beerInfo) => {
     const form = document.querySelector('#addPost');
     const itemId = beerInfo.id;
     const username = form.children[0].value;
-    const comment = form.children[1].textContent;
+    const comment = document.querySelector('#comment').value;
     const newComment = {
       item_id: itemId,
       username,
@@ -24,23 +24,9 @@ const sendComment = async (e, beerInfo) => {
   }
 };
 
-const commentsCounter = async (beerId) => {
-  try {
-    const response = await apiCall(`${appID}/comments?item_id=${beerId}`, 'GET', {}, true);
-    const res = JSON.parse(response);
-    if (res.error) {
-      throw new Error(res.error);
-    }
-    return JSON.parse(response);
-  } catch (err) {
-    error(err);
-    return [];
-  }
-};
-
 const comments = async (beerInfo) => {
   overlay.classList.remove('hidden');
-  const comment = await commentsCounter(beerInfo.id);
+  const comment = await getComments(beerInfo.id);
   const commentNo = comment.length === 0 || comment.length === undefined ? 0 : comment.length;
   popUp.innerHTML = `
                 
@@ -55,6 +41,7 @@ const comments = async (beerInfo) => {
                       <input type="submit" class="add" id="add" value="Comment">
                     </form>                  
                   </div>
+                  
                 </div>`;
   const submit = document.getElementById('addPost');
   const closePopUpBtn = document.querySelector('.close-pop-up');

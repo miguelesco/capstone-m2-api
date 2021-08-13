@@ -7,7 +7,8 @@
     "sass": "sass --watch src/app/scss/main.scss src/main.css",
     "build": "webpack --config config/webpack.prod.js",
     "start": "webpack serve --config config/webpack.dev.js",
-    "test": "jest "
+    "test": "jest ",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "Miguelangel Escorche",
@@ -30,6 +31,7 @@
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.20.1",
+    "gh-pages": "^3.2.3",
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"

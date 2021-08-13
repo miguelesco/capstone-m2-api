@@ -1,9 +1,9 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-trailing-spaces */
-import apiCall, { error, ul, appID, liNav } from './utilities.js';
+import apiCall, { error, ul, appID, liNav, getComments } from './utilities.js';
 import eventListeners from './evenListeners.js';
-import { closePopUpHandler, overlay, popUp } from './pop.js';
+import { closePopUpHandler, overlay, popUp, renderComments } from './pop.js';
 
 let beerElement;
 
@@ -18,8 +18,9 @@ class Render {
     }
   }
 
-  openPopup = (beersInfo) => {
+  openPopup = async (beersInfo) => {
     overlay.classList.remove('hidden');
+    const comments = await getComments(beersInfo.id);
     popUp.innerHTML = `
                 <button class="close-pop-up" >&times;</button>
                 <div class="pop-content">
@@ -28,9 +29,13 @@ class Render {
                     <p>${beersInfo.name}</p>
                     <p class="likes"><i class="far fa-heart"></i> 5</p>
                   </div>
+                  <div class="comments-display">
+                    <h5>Comments (${comments.length})</h5>
+                  </div>
                 </div>`;
     const closePopUpBtn = document.querySelector('.close-pop-up');
     closePopUpBtn.addEventListener('click', () => closePopUpHandler(closePopUpBtn));
+    renderComments(comments);
   }
 
   numberOfItems = (beersLength = 0) => {
